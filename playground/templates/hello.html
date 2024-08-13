@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if name %}
+        <h1>Hello {{ name }}!</h1>
+    {% else %}
+        <h1>Hello World!</h1>
+    {% endif %}
+
+    <form action="{% url 'add_two_numbers' %}" method="post">
+
+        {% csrf_token %} <!-- This is required for security reasons when we are trying to do a POST call-->
+        <!-- This is the not required for get -->
+        <label for="num1">Number 1:</label>
+        <input type="number" name="num1" required><br><br>
+        <label for="num2">Number 2:</label>
+        <input type="number" name="num2" required><br><br>
+        <input type="submit">
+    </form>
+
+{% endblock %}
